@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  resource :session
-  resources :passwords, param: :token
-  get "pages/home"
   resources :posts
-  namespace :api do
-    namespace :v1 do
-      resources :users, only: [:index]
-    end
+  devise_for :users
+  get "pages/home"
+  # Temp routes
+  resources :temp  ,only: [:index, :show, :create]
+  namespace :admin do
+    resources :post
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
