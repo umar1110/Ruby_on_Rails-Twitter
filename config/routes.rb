@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :comments
+  resources :posts do
+    collection do
+      get :temp
+    end
+  end
   devise_for :users
   get "pages/home"
   # Temp routes
